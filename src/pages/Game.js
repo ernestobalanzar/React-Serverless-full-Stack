@@ -27,13 +27,15 @@ export default function Game() {
     const interval = setInterval(() => updateTime(currentTime), 1);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (seconds <= -1) {
       navigate("/gameOver");
     }
-  }, [seconds, ms, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seconds, navigate]);
 
   const handleKeyUp = useCallback(
     (e) => {
@@ -47,8 +49,9 @@ export default function Game() {
         }
       }
       setRandomChar();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [currentChar]
+    [currentChar, score, setScore]
   );
 
   useEffect(() => {
